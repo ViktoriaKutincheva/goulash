@@ -1,24 +1,89 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom" 
+// import { useState, useEffect } from "react"
+import axios from "axios"
+import ShoppingList from "./components/ShoppingList"
+import Footer from "./components/Footer"
+import WeekDays from "./components/WeekDays"
+import Recipe from "./components/Recipe"
+import WeekDay from "./components/WeekDay"
+import Search from "./components/Search"
+import { UserCircleIcon } from "@heroicons/react/solid"
+
+
+
 
 function App() {
+
+  const d = new Date();
+  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let day = weekday[d.getDay()]; 
+
+  let today_recipes;
+  let weekdays;
+
+  async function get_weekdays() {
+    const result = await axios.get('https://goulash-server.herokuapp.com/weekdays/')
+    const data = result.data
+    weekdays = data
+    return weekdays
+  }
+  
+
+  async function get_todays_recipes() {
+    await get_weekdays();
+    weekdays.map((weekday) => {
+      if(weekday.day === day) { today_recipes = weekday.recipes }
+      return today_recipes;
+    })
+  }
+  
+  get_todays_recipes();
+
+
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <>
+    <div className='container mx-auto px-4 relative pb-16 '>
+      <span className='absolute top-4 right-4'>
+        {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
+        </svg> */}
+        <UserCircleIcon className="h-8 w-8" />
+      </span>
+      
+      <h1 style={{fontFamily: "'Rochester', cursive", fontSize: "3.2em", color: "hsl(134, 67%, 53%)"}}>Goulash</h1>
+      <h3 className='pl-7 -mt-6 uppercase font-light text-sm mb-8' style={{color: 'hsl(42, 10%, 54%)'}}>Plan your weekly menu</h3>
+      
+      <Routes>
+        <Route 
+          path='/' 
+          exact 
+          element={<ShoppingList />} /> 
+
+        <Route path="/weekDays/*" element={<WeekDays weekdays={weekdays ? weekdays : ''} />} />
+          
+ 
+        <Route path="/recipe" element={<Recipe />} />
+          
+
+        <Route path='/weekDay' element={
+          <WeekDay day={day}  recipes={today_recipes} />
+        } />
+      
+        <Route path='/search' element={<Search />} />
+      </Routes>
+
+      
+      <Footer />
+      <a href='https://www.freepik.com/vectors/food' className='hidden text-sm'>Food vector created by macrovector - www.freepik.com</a>
+
+      </div>
+    </>
+    </Router>
+    
   );
 }
 
