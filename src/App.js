@@ -48,14 +48,11 @@ function App() {
       <>
     <div className='container mx-auto px-4 relative pb-16 '>
       <span className='absolute top-4 right-4'>
-        {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
-        </svg> */}
         <UserCircleIcon className="h-8 w-8" />
       </span>
       
-      <h1 style={{fontFamily: "'Rochester', cursive", fontSize: "3.2em", color: "hsl(134, 67%, 53%)"}}>Goulash</h1>
-      <h3 className='pl-7 -mt-6 uppercase font-light text-sm mb-8' style={{color: 'hsl(42, 10%, 54%)'}}>Plan your weekly menu</h3>
+      <h1 style={{fontFamily: "'Rochester', cursive", fontSize: "2.8em", color: "hsl(134, 67%, 53%)"}}>Goulash</h1>
+      <h3 className='pl-7 -mt-6 uppercase font-light text-sm mb-4' style={{color: 'hsl(42, 10%, 54%)'}}>Plan your weekly menu</h3>
       
       <Routes>
         <Route 

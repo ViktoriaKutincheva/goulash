@@ -1,7 +1,6 @@
-import { Route, Routes, useNavigate, Link } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Recipe from './Recipe';
-import Button from './Button';
 
 
 
@@ -24,7 +23,7 @@ const SearchResults = (props) => {
                     
                     <img src={result.image} alt="" className='w-3/12 mr-3 h-auto rounded' />
                     <div className='grow'>
-                        <h4 className='mb-1'><Link to='/recipe'>{result.title}</Link></h4>
+                        <h3 className='mb-1 h4'><Link to='/recipe'>{result.title}</Link></h3>
                         <p>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />

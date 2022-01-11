@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply text-base;
 }
 
 code {
@@ -29,16 +30,16 @@ body {
   font-family: 'Fira Sans', sans-serif;
   @apply min-h-screen;
 }
-h1 {
+h1, .h1 {
   font-size: 1.6em;
 }
-h2 {
+h2, .h2 {
   font-size: 1.4em;
 }
-h3 {
+h3, .h3 {
   font-size: 1.25em;
 }
-h4 {
+h4, .h4 {
   font-size: 1.1em;
 }
 h1, h2, h3, h4, h5 {
@@ -119,6 +120,11 @@ footer {
 .list-search-results li img {
   transition: all .3s;
 }
+@media (max-width: 768px) {
+  .list-search-results li img {
+    display: none;
+  }
+}
 .list-search-results li:hover {
   background-color: hsl(46, 54%, 82%);
 }
@@ -126,10 +132,10 @@ footer {
   background-color: hsl(46, 54%, 82%);
 }
 .list-search-results li:hover img {
-  transform: rotate(-5deg) scale(1.13);
+  transform: rotate(-5deg) scale(1.15);
 }
 .list-search-results li:focus-within img {
-  transform: rotate(-5deg) scale(1.13);
+  transform: rotate(-5deg) scale(1.15);
 }
 .list-search-results a {
   @apply no-underline;
@@ -138,5 +144,7 @@ footer {
   content: '';
   @apply absolute left-0 right-0 top-0 bottom-0;
 } 
-
+.list-search-results li h3 {
+  line-height: 1.2;
+}
 
