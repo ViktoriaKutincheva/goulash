@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
-import axios from "axios";
-import Button from "./Button";
+import axios from "axios"
+import Button from "./Button"
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom"
+import SearchResults from "./SearchResults"
 
 
     
@@ -14,7 +16,9 @@ const Search = () => {
         searchDishTypes: '',
         searchIngredients: '',
         searchPrepTime: ''
-    })
+    });
+    let [searchResults, setResults] = useState([]);
+    let navigate = useNavigate();
 
 
     useEffect(() => {axios.get('https://goulash-server.herokuapp.com/dishtypes')
@@ -40,7 +44,7 @@ const Search = () => {
         let title = searchQuery['searchTitle'].toLowerCase();
         //let searchDishType = searchQuery.dishtype;
         let ingredients = searchQuery['searchIngredients'].toLowerCase();
-        //let searchPrepTime = searchQuery.prepTime;
+        let searchPrepTime = searchQuery.searchPrepTime;
 
         
 
@@ -67,15 +71,30 @@ const Search = () => {
                 }
             });
         }
-        console.log(filtered);
-        // console.log(filteredRecipes);
+        if(searchPrepTime) {
+            filtered = filtered.filter((recipe) => {
+                if(recipe.prepTime <=  searchPrepTime) {
+                    return true;
+                }
+            })
+        }
+        
+        setResults(filtered);
+
+        //ToDo: replace useNavigate with useSearchParams?
+        navigate('/search/searchResults');
     }
 
 
 
     return (
+        <>
+        
+            
         <div>
             <h2>Find Recipes</h2>
+
+            {/* ToDo: Hide/Show Form */}
             <form className='pb-5'>
                 <div className='flex-grow w-full mb-3'>
                     <label className='block'>Title</label>
@@ -94,16 +113,22 @@ const Search = () => {
                 </div>
                 <div className='flex-grow w-full mb-3'>
                     <label className='block'>Preparation Time</label>
-                    <select className='rounded w-full'>
+                    <select id='searchPrepTime' className='rounded w-full' onChange={(e)=> handle(e)}>
                         <option value=''>Any</option>
-                        <option value='upto30'>Up to 30 mins</option>
-                        <option value='upto1'>Up to 1 hour</option>
+                        <option value='30'>Up to 30 mins</option>
+                        <option value='60'>Up to 1 hour</option>
                     </select>
                 </div>
                 <Button title='Find Recipes' color='orange' block={true} onClick={onFormSubmit} />
             </form>
                 
         </div>
+
+        {/* ToDo: fix paths */}
+        <Routes>
+            <Route path='/searchResults/*' element={<SearchResults results={searchResults} />}></Route>
+        </Routes>
+        </>
     )
 }
     

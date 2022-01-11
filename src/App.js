@@ -65,15 +65,13 @@ function App() {
 
         <Route path="/weekDays/*" element={<WeekDays weekdays={weekdays ? weekdays : ''} />} />
           
- 
-        <Route path="/recipe" element={<Recipe />} />
+        <Route path="/recipe" element={<Recipe id='' />} />
           
-
         <Route path='/weekDay' element={
           <WeekDay day={day}  recipes={today_recipes} />
         } />
       
-        <Route path='/search' element={<Search />} />
+        <Route path='/search/*' element={<Search />} />
       </Routes>
 
       

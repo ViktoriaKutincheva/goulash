@@ -19,10 +19,7 @@ const WeekDays = (weekdays) => {
             setWeekdays(days)
         }), 
     []);
-    
-    
-   
-    
+       
         
     return (
         
@@ -42,8 +39,8 @@ const WeekDays = (weekdays) => {
                             })
                         } 
                                 
-                                <Routes>
-                        <Route path='/weekDay' element={<WeekDay day={current_day} recipes={current_day_recipes} />} />
+                        <Routes>
+                            <Route path='/weekDay' element={<WeekDay day={current_day} recipes={current_day_recipes} />} />
                         </Routes>
                     </div>
                     

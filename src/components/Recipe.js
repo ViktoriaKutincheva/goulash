@@ -7,7 +7,10 @@ import DOMPurify from 'dompurify';
 
 
 const Recipe = (props) => {
-    let recipeID = 716381;
+    let recipeID = props.id;
+    let title;
+    let summary;
+    let instructions;
     let [singleRecipe, setSingleRecipe] = useState(null)
 
       
@@ -19,7 +22,6 @@ const Recipe = (props) => {
             return response.data
         }  
 
-
         const getRecipe = async () => {
             const recipeFromServer = await fetchRecipe()
             setSingleRecipe(recipeFromServer)
@@ -29,24 +31,28 @@ const Recipe = (props) => {
       
     }, [recipeID])
 
-
-    let title = DOMPurify.sanitize(singleRecipe.title);
-    let summary = DOMPurify.sanitize(singleRecipe.summary);
-    let instructions = DOMPurify.sanitize(singleRecipe.instructions);
+    if(singleRecipe) {
+        title = DOMPurify.sanitize(singleRecipe.title);
+        summary = DOMPurify.sanitize(singleRecipe.summary);
+        instructions = DOMPurify.sanitize(singleRecipe.instructions);
+    }
+    
+        
 
 
     
     return (
             <article className='prose'>
+            <img src={singleRecipe && singleRecipe.image} alt={title} />
             <h1>{singleRecipe && parse(title)}</h1>
             <p>{singleRecipe && parse(summary)}</p>
 
-            <div className='recipe-ingredients'>
+            <div className='recipe-ingredients mt-8'>
                 <h2>Ingredients</h2>
-                <ul>
-                    {singleRecipe && 
-                          <List listItems={singleRecipe.ingredients}/>
-                    }
+                <ul className="list-none mb-8">
+                    {singleRecipe && singleRecipe.ingredients.map((ingredient, key) => {
+                        return <li className="border-b py-2 my-0" key={key}>{ingredient.originalString}</li>
+                    })}
                 </ul>
                
         </div>

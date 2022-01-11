@@ -67,18 +67,19 @@ a {
 }
 
 
-button {
-  @apply px-4 py-2;
+button, .btn {
+  @apply px-4 py-2 rounded;
+  text-decoration: none;
 }
-button.sm {
+.btn-sm {
   @apply px-2 py-1 text-sm;
 }
-button.btn-yellow {
+.btn-yellow {
   color: #fff;
   background-color: hsl(43, 100%, 55%);
   text-shadow: 1px 1px rgba(0,0,0,.18);
 }
-button.btn-orange {
+.btn-orange {
   color: #fff;
   background-color: hsl(31, 91%, 56%);
   text-shadow: 1px 1px rgba(0,0,0,.18);
@@ -102,7 +103,7 @@ footer {
 .shopping-list li.false svg {
   @apply text-gray-400;
 }
-.shopping-list .list-none li {
+.shopping-list .list-none li, .list-none li {
   border-color: hsl(30, 51%, 78%);
 }
 .weekday-card {
