@@ -6,7 +6,7 @@ import DOMPurify from 'dompurify';
 
 
 
-const Recipe = (props) => {
+const Recipe = (props) => { 
     let recipeID = props.id;
     let title;
     let summary;

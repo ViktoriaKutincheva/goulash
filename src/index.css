@@ -107,12 +107,36 @@ footer {
   border-color: hsl(30, 51%, 78%);
 }
 .weekday-card {
-  background-color: hsl(46, 54%, 86%);
+  background-color: hsl(46, 54%, 82%);
   /* border-color: hsl(30, 51%, 78%); */
 }
 .weekday-recipes-list h5 {
   @apply font-light mb-1;
 }
-
+.list-search-results li {
+  @apply relative;
+}
+.list-search-results li img {
+  transition: all .3s;
+}
+.list-search-results li:hover {
+  background-color: hsl(46, 54%, 82%);
+}
+.list-search-results li:focus-within {
+  background-color: hsl(46, 54%, 82%);
+}
+.list-search-results li:hover img {
+  transform: rotate(-5deg) scale(1.13);
+}
+.list-search-results li:focus-within img {
+  transform: rotate(-5deg) scale(1.13);
+}
+.list-search-results a {
+  @apply no-underline;
+}
+.list-search-results a:after {
+  content: '';
+  @apply absolute left-0 right-0 top-0 bottom-0;
+} 
 
 
