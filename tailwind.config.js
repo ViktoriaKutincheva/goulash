@@ -4,15 +4,15 @@ module.exports = {
   ],
   theme: {
     fontSize: {
-      'xs': '.75rem',
-      'sm': '.875rem',
-      'tiny': '.875rem',
+      'xs': '.875rem',
+      'sm': '1rem',
+      'tiny': '1rem',
       'base': '1.2rem',
-      'lg': '1.125rem',
-      'xl': '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
+      'lg': '1.325rem',
+      'xl': '1.5rem',
+      '2xl': '1.75rem',
+      '3xl': '2rem',
+      '4xl': '2.5rem',
       '5xl': '3rem',
       '6xl': '4rem',
       '7xl': '5rem',
@@ -48,6 +48,20 @@ module.exports = {
             ],
           },
       }, 
+      colors: {
+        chocolate: {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          300: '#d6d3d1',
+          400: 'hsl(31, 22%, 52%)',
+          500: 'hsl(32deg 40% 28%)',
+          600: 'hsl(31, 50%, 21%)',
+          700: '#44403c',
+          800: '#292524',
+          900: '#1c1917'
+        }
+      },
     },
   },
   plugins: [

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Card from './CardWeekday'  
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import WeekDay from './WeekDay'
 
 
@@ -11,6 +11,7 @@ const WeekDays = (weekdays) => {
     const [week_days, setWeekdays] = useState([]); 
     let [current_day, setCurrentDay] = useState('');
     let [current_day_recipes, setCurrentDayRecipes] = useState([]);
+    
 
     useEffect(() => 
         axios.get('https://goulash-server.herokuapp.com/weekdays')
@@ -34,7 +35,7 @@ const WeekDays = (weekdays) => {
                                 }
                                                     
                                 return <Card key={index} cardTitle={weekday.day} expandable={true} cardOnClick={onClick}>
-                                    { recipes && recipes.map((recipe, index) => <p key={index} className='text-sm'>{recipe.title}</p>) } 
+                                    { recipes && recipes.map((recipe, index) => <p key={index} className='h5'>{recipe.title}</p>) } 
                                     </Card>
                             })
                         } 

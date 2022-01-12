@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom" 
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom" 
 // import { useState, useEffect } from "react"
 import axios from "axios"
 import ShoppingList from "./components/ShoppingList"
@@ -14,6 +14,7 @@ import { UserCircleIcon } from "@heroicons/react/solid"
 
 function App() {
 
+  
   const d = new Date();
   const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let day = weekday[d.getDay()]; 
@@ -41,18 +42,18 @@ function App() {
 
 
 
-  
+
 
   return (
     <Router>
       <>
     <div className='container mx-auto px-4 relative pb-16 '>
       <span className='absolute top-4 right-4'>
-        <UserCircleIcon className="h-8 w-8" />
+        <UserCircleIcon className="h-10 w-10" />
       </span>
       
       <h1 style={{fontFamily: "'Rochester', cursive", fontSize: "2.8em", color: "hsl(134, 67%, 53%)"}}>Goulash</h1>
-      <h3 className='pl-7 -mt-6 uppercase font-light text-sm mb-4' style={{color: 'hsl(42, 10%, 54%)'}}>Plan your weekly menu</h3>
+      <h3 className='pl-7 -mt-6 uppercase font-light text-sm mb-2' style={{color: 'hsl(42, 10%, 54%)'}}>Plan your weekly menu</h3>
       
       <Routes>
         <Route 
