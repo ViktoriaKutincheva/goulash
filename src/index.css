@@ -94,6 +94,11 @@ button, .btn {
   background-color: hsl(134, 67%, 53%);
   text-shadow: 1px 1px rgba(0,0,0,.18);
 }
+.btn-red {
+  color: #fff;
+  background-color: hsl(0, 89%, 64%);
+  text-shadow: 1px 1px rgba(0,0,0,.18);
+}
 .btn-gray-200 {
   @apply bg-gray-200;
 }
@@ -109,6 +114,9 @@ footer {
 }
 .shopping-list .list-none li, .list-none li {
   border-color: hsl(30, 51%, 78%);
+}
+.shopping-list .btn-red {
+  @apply float-right mt-6;
 }
 .weekday-card {
   background-color: hsl(46, 54%, 82%);

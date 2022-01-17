@@ -62,9 +62,7 @@ function App() {
           element={<ShoppingList />} /> 
 
         <Route path="/weekDays/*" element={<WeekDays weekdays={weekdays ? weekdays : ''} />} />
-          
-        <Route path="/recipe" element={<Recipe id='' />} />
-          
+                    
         <Route path='/weekDay' element={
           <WeekDay day={day}  recipes={today_recipes} />
         } />

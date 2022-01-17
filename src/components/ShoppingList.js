@@ -14,7 +14,8 @@ const ShoppingList = (props) => {
 
     const [grocery, setGrocery] = useState({
       item: '',
-      quantity: ''
+      quantity: '',
+      id: ''
     })
     
     // Fetch Groceries
@@ -30,11 +31,12 @@ const ShoppingList = (props) => {
 
 
     // Add Product
-    const addGrocery = () => {
+    const addGrocery = (g) => {
         axios.post('https://goulash-server.herokuapp.com/groceries', {
           item: grocery.item,
-          quantity: grocery.quantity
-        })      
+          quantity: grocery.quantity,
+          id: groceries.length + 1
+        }).then((res) => setGroceries([...groceries, res.data])) 
     }
 
     function handle(e) {
@@ -49,14 +51,26 @@ const ShoppingList = (props) => {
         alert('Please add product')
         return
       }
-
       addGrocery({ grocery })
-      setGroceries([...groceries, grocery])
       setGrocery({
         item: '',
-        quantity: ''
+        quantity: '',
+        id: ''
       })
+      document.getElementById('item').focus();
+      console.log(groceries);
+    }
 
+    //Clear List
+    const clearShoppingList = () => {
+    if(groceries.length === 0) {
+      alert('Your Shopping List is empty');
+    }
+    groceries.map((grocery) => axios.delete('http://goulash-server.herokuapp.com/groceries/' + grocery.id)
+    .then(setGroceries((prev) => {
+      return prev.filter((gro) => gro.id != grocery.id);
+    })))
+    //setGroceries([]);
     }
 
 
@@ -83,7 +97,7 @@ const ShoppingList = (props) => {
             <Button type='submit' title='Add' color='green' block={true} />
           </form>}
 
-          {groceries ? <List listItems={groceries}/> : <p>Your shopping list is empty</p>}
+          {groceries ? <><List listItems={groceries}/><Button title='Clear List' color='red' onClick={() => clearShoppingList()}/></> : <p>Your shopping list is empty</p>}
         </div>
     )
 }

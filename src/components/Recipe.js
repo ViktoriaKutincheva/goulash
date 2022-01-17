@@ -42,13 +42,13 @@ const Recipe = (props) => {
 
     
     return (
-            <article className='prose'>
+            <article className='pb-3'>
             <img src={singleRecipe && singleRecipe.image} alt={title} />
-            <h1>{singleRecipe && parse(title)}</h1>
+            <h1 className="h2">{singleRecipe && parse(title)}</h1>
             <p>{singleRecipe && parse(summary)}</p>
 
             <div className='recipe-ingredients mt-8'>
-                <h2>Ingredients</h2>
+                <h2 className="h3">Ingredients</h2>
                 <ul className="list-none mb-8">
                     {singleRecipe && singleRecipe.ingredients.map((ingredient, key) => {
                         return <li className="border-b py-2 my-0" key={key}>{ingredient.originalString}</li>
@@ -57,7 +57,7 @@ const Recipe = (props) => {
                
         </div>
         <div className='recipe-preparation'>
-                <h2>Instructions</h2>
+                <h2 className="h3">Instructions</h2>
                 {singleRecipe && parse(instructions)}
         </div>
     </article>

@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import Button from "./Button"
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from "react-router-dom"
 import SearchResults from "./SearchResults"
 
 
     
 const Search = () => {
-
-
+    
     const [dishTypes, setDishTypes] = useState([]);
     let [allRecipes, setAllRecipes] = useState([]);
     let [searchQuery, setSearchQuery] = useState({
@@ -19,7 +18,6 @@ const Search = () => {
     });
     let [searchResults, setResults] = useState([]);
     let navigate = useNavigate();
-
 
     useEffect(() => {axios.get('https://goulash-server.herokuapp.com/dishtypes')
             .then((res) => res.data)
@@ -45,9 +43,6 @@ const Search = () => {
         //let searchDishType = searchQuery.dishtype;
         let ingredients = searchQuery['searchIngredients'].toLowerCase();
         let searchPrepTime = searchQuery.searchPrepTime;
-
-        
-
         
         let filtered = allRecipes.filter((recipe) => {
             if(recipe.title.toLowerCase().includes(title)) {
@@ -56,6 +51,7 @@ const Search = () => {
                 return false;
             }
         });
+
         if(ingredients) { 
             filtered = filtered.filter((rec) => {
                 let include = false;
@@ -71,6 +67,7 @@ const Search = () => {
                 }
             });
         }
+
         if(searchPrepTime) {
             filtered = filtered.filter((recipe) => {
                 if(recipe.prepTime <=  searchPrepTime) {
