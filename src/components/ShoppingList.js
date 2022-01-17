@@ -66,7 +66,7 @@ const ShoppingList = (props) => {
     if(groceries.length === 0) {
       alert('Your Shopping List is empty');
     }
-    groceries.map((grocery) => axios.delete('http://goulash-server.herokuapp.com/groceries/' + grocery.id)
+    groceries.map((grocery) => axios.delete('https://goulash-server.herokuapp.com/groceries/' + grocery.id)
     .then(setGroceries((prev) => {
       return prev.filter((gro) => gro.id != grocery.id);
     })))
