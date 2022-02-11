@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import axios from "axios"
 
 
+// ToDo: Make items shiftable
+
 
 
 const ShoppingList = (props) => {
@@ -42,6 +44,7 @@ const ShoppingList = (props) => {
     function handle(e) {
       const newgrocery = {...grocery}
       newgrocery[e.target.id] = e.target.value
+      console.log(newgrocery);
       setGrocery(newgrocery)
     }
 
@@ -58,19 +61,18 @@ const ShoppingList = (props) => {
         id: ''
       })
       document.getElementById('item').focus();
-      console.log(groceries);
     }
 
     //Clear List
     const clearShoppingList = () => {
-    if(groceries.length === 0) {
-      alert('Your Shopping List is empty');
-    }
-    groceries.map((grocery) => axios.delete('https://goulash-server.herokuapp.com/groceries/' + grocery.id)
-    .then(setGroceries((prev) => {
-      return prev.filter((gro) => gro.id != grocery.id);
-    })))
-    //setGroceries([]);
+      if(groceries.length === 0) {
+        alert('Your Shopping List is empty');
+      }
+      groceries.map((grocery) => axios.delete('https://goulash-server.herokuapp.com/groceries/' + grocery.id)
+      .then(setGroceries((prev) => {
+        return prev.filter((gro) => gro.id !== grocery.id);
+      })))
+      //setGroceries([]);
     }
 
 
@@ -96,8 +98,7 @@ const ShoppingList = (props) => {
             </div>
             <Button type='submit' title='Add' color='green' block={true} />
           </form>}
-
-          {groceries ? <><List listItems={groceries}/><Button title='Clear List' color='red' onClick={() => clearShoppingList()}/></> : <p>Your shopping list is empty</p>}
+          {groceries && groceries.length > 0 ? <><List listItems={groceries}/><Button title='Clear List' color='red' onClick={() => clearShoppingList()}/></> : <p>Your shopping list is empty</p>}
         </div>
     )
 }

@@ -113,10 +113,10 @@ footer {
   @apply text-gray-400;
 }
 .shopping-list .list-none li, .list-none li {
-  border-color: hsl(30, 51%, 78%);
+  @apply border-chocolate-300;
 }
 .shopping-list .btn-red {
-  @apply float-right mt-6;
+  @apply float-right mt-4;
 }
 .weekday-card {
   background-color: hsl(46, 54%, 82%);

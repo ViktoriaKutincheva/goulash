@@ -8,6 +8,7 @@ import Recipe from "./components/Recipe"
 import WeekDay from "./components/WeekDay"
 import Search from "./components/Search"
 import { UserCircleIcon } from "@heroicons/react/solid"
+import SearchResults from "./components/SearchResults"
 
 
 
@@ -62,11 +63,7 @@ function App() {
           element={<ShoppingList />} /> 
 
         <Route path="/weekDays/*" element={<WeekDays weekdays={weekdays ? weekdays : ''} />} />
-                    
-        <Route path='/weekDay' element={
-          <WeekDay day={day}  recipes={today_recipes} />
-        } />
-      
+        <Route path='weekDay' element={<WeekDay day={day}  recipes={today_recipes}  />} />
         <Route path='/search/*' element={<Search />} />
       </Routes>
 

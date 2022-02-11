@@ -9,18 +9,16 @@ const SearchResults = (props) => {
     const [clickedRecipeID, setClickedRecipeID] = useState(null);
     function onDetailsClick(e) {
         const recipeID = e.target.closest('li').id;
-        setClickedRecipeID(recipeID, navigate('recipe'));
+        setClickedRecipeID(recipeID, navigate(recipeID))
+        }
         
-    }
-
     return (
         <>
-            
+           
             <ul className="list-none mt-6 list-search-results -mx-4 ">
-            {props.results.map((result, key) => { 
+            {props.results && props.results.map((result, key) => { 
                 
                 return <li key={key} id={result.id} className='flex mb-0 px-4 py-3 items-start' onClick={onDetailsClick} >
-                    
                     <img src={result.image} alt="" className='w-3/12 mr-4 h-auto rounded' />
                     <div className='grow'>
                         <h3 className='mb-1 h4'><Link to='searhResults/recipe'>{result.title}</Link></h3>
@@ -35,13 +33,14 @@ const SearchResults = (props) => {
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                             </svg> 
                             {result.prepTime} mins</p>
-                        {/* <Button title="Details" color="green" size="btn-sm mt-2" onClick={onDetailsClick} />   */}
                     </div>
                 </li>
             })}  
             </ul>
+             
+
             <Routes>
-                <Route path="/recipe" element={<Recipe id={clickedRecipeID} />} />
+                <Route path={clickedRecipeID} element={<Recipe id={clickedRecipeID} />} />
             </Routes>
         </>
     )

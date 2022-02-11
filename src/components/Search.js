@@ -3,6 +3,7 @@ import axios from "axios"
 import Button from "./Button"
 import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from "react-router-dom"
 import SearchResults from "./SearchResults"
+import Recipe from "./Recipe"
 
 
     
@@ -75,19 +76,17 @@ const Search = () => {
                 }
             })
         }
-        
         setResults(filtered);
+        navigate('searchResults');
 
         //ToDo: replace useNavigate with useSearchParams?
-        navigate('/search/searchResults');
+        //ToDo: search by Dish Type
     }
 
-
+    
 
     return (
-        <>
-        
-            
+        <>            
         <div>
             <h2>Find Recipes</h2>
 
@@ -123,7 +122,7 @@ const Search = () => {
 
         {/* ToDo: fix paths */}
         <Routes>
-            <Route path='/searchResults/*' element={<SearchResults results={searchResults} />}></Route>
+        <Route path='/searchResults/*' element={<SearchResults results={searchResults} />} />
         </Routes>
         </>
     )
