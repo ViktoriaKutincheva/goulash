@@ -83,7 +83,10 @@ const Recipe = (props) => {
     
     return (
         <article className='pb-3'>
-            <img src={singleRecipe && singleRecipe.image} alt={title} />
+            {/* <img src={singleRecipe && singleRecipe.image} alt={title} /> */}
+            <div className='w-full' style={{height: '20vh', backgroundImage: `url(${singleRecipe && singleRecipe.image})` , backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                {/* <img src={singleRecipe && singleRecipe.image} alt={title} className='absolute left-0 right-0 top-1/2' style={{transform: 'translate(0, -50%)'}} /> */}
+            </div>
             <h1 className="h2">{singleRecipe && parse(title)}</h1>
             <p>{singleRecipe && parse(summary)}</p>
             {/* On submit, write recipe to weekdays */}
