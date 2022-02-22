@@ -6,10 +6,10 @@ import Recipe from './Recipe';
 
 const SearchResults = (props) => {
     const navigate = useNavigate();
-    const [clickedRecipeID, setClickedRecipeID] = useState(null);
+    const [clickedRecipeID, setClickedRecipeID] = useState('');
     function onDetailsClick(e) {
         const recipeID = e.target.closest('li').id;
-        setClickedRecipeID(recipeID, navigate(recipeID))
+        setClickedRecipeID(recipeID, navigate('/recipes/' + recipeID))
         }
         
     return (
@@ -40,7 +40,7 @@ const SearchResults = (props) => {
              
 
             <Routes>
-                <Route path={clickedRecipeID} element={<Recipe id={clickedRecipeID} />} />
+                <Route path={'/recipes/' + clickedRecipeID} element={<Recipe id={clickedRecipeID} />} />
             </Routes>
         </>
     )

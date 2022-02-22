@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import Button from "./Button"
-import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, useNavigate, useParams } from "react-router-dom"
 import SearchResults from "./SearchResults"
 import Recipe from "./Recipe"
 
@@ -18,7 +18,10 @@ const Search = () => {
         searchPrepTime: ''
     });
     let [searchResults, setResults] = useState([]);
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    const params = useParams();
+
+    //console.log(URLSearchParams.append('id','1'));
 
     useEffect(() => {axios.get('https://goulash-server.herokuapp.com/dishtypes')
             .then((res) => res.data)

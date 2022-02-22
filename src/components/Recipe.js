@@ -4,11 +4,13 @@ import List from './List';
 import { useState, useEffect } from "react";
 import DOMPurify from 'dompurify';
 import Button from "./Button";
+import { useParams } from "react-router-dom";
 
 
 
 const Recipe = (props) => { 
-    let recipeID = props.id;
+    const params = useParams();
+    let recipeID = params.recipeID;
     let title;
     let summary;
     let instructions;
@@ -84,7 +86,7 @@ const Recipe = (props) => {
     return (
         <article className='pb-3'>
             {/* <img src={singleRecipe && singleRecipe.image} alt={title} /> */}
-            <div className='w-full' style={{height: '20vh', backgroundImage: `url(${singleRecipe && singleRecipe.image})` , backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+            <div className='w-full mb-3' style={{height: '20vh', backgroundImage: `url(${singleRecipe && singleRecipe.image})` , backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}>
                 {/* <img src={singleRecipe && singleRecipe.image} alt={title} className='absolute left-0 right-0 top-1/2' style={{transform: 'translate(0, -50%)'}} /> */}
             </div>
             <h1 className="h2">{singleRecipe && parse(title)}</h1>

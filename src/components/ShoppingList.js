@@ -5,6 +5,7 @@ import axios from "axios"
 
 
 // ToDo: Make items shiftable
+// ToDo: Sort List by Aisle
 
 
 
