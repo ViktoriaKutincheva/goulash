@@ -3,12 +3,14 @@ import { NavLink, useLocation } from "react-router-dom"
 
 const Footer = () => {
     let location = useLocation();
-
+    const d = new Date();
+    let dayId = d.getDay();
+    
     
     return (
         
         <footer className='container px-4 py-2 mx-auto flex justify-between content-center fixed bottom-0 left-0 right-0 lg:left-1/4 lg:right-1/4 lg:w-1/2 md:w-8/12 ' >
-            <NavLink to='/weekDay' state={{ from: 'footerNav' }}>
+            <NavLink to={'/weekdays/' + dayId}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>

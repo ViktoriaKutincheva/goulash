@@ -69,6 +69,9 @@ const Recipe = (props) => {
                         id: Math.floor(Math.random() * 100)
                     })
                     .then((res) => console.log(res))
+                    .catch(function (error) {
+                        console.log(error);
+                      });
                 });
             } else {
                 document.getElementById('recipeAddError').classList.remove('hidden');
@@ -85,13 +88,10 @@ const Recipe = (props) => {
     
     return (
         <article className='pb-3'>
-            {/* <img src={singleRecipe && singleRecipe.image} alt={title} /> */}
             <div className='w-full mb-3' style={{height: '20vh', backgroundImage: `url(${singleRecipe && singleRecipe.image})` , backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}>
-                {/* <img src={singleRecipe && singleRecipe.image} alt={title} className='absolute left-0 right-0 top-1/2' style={{transform: 'translate(0, -50%)'}} /> */}
             </div>
             <h1 className="h2">{singleRecipe && parse(title)}</h1>
             <p>{singleRecipe && parse(summary)}</p>
-            {/* On submit, write recipe to weekdays */}
             {/* ToDo: detect curent day and display only the rest of the week  */}
             {/* ToDo: After adding a recipe to menu, manage success and error messages. Include link to Weekdays */}
             <div className='recipe-add mt-2 rounded-sm bg-chocolate-200 px-3 py-3'>

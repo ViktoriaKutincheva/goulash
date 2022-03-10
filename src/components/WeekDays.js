@@ -1,17 +1,14 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Card from './CardWeekday'  
-import { Route, Routes, useLocation } from "react-router-dom"
+import { Route, Routes, Outlet, useNavigate } from "react-router-dom"
 import WeekDay from './WeekDay'
 
 
 
-const WeekDays = (weekdays) => {
+const WeekDays = () => {
 
-    const [week_days, setWeekdays] = useState([]); 
-    let [current_day, setCurrentDay] = useState('');
-    let [current_day_recipes, setCurrentDayRecipes] = useState([]);
-    
+    const [week_days, setWeekdays] = useState([]);     
 
     useEffect(() => 
         axios.get('https://goulash-server.herokuapp.com/weekdays')
@@ -23,27 +20,25 @@ const WeekDays = (weekdays) => {
        
         
     return (
+        <>
+        
         
                     <div className='weekdays relative'>
+                        
                     
-                           {week_days && 
-                            week_days.map((weekday, index) => {
-                                let recipes = weekday.recipes;
-                                const onClick = () => {
-                                    setCurrentDay(weekday.day);
-                                    setCurrentDayRecipes(recipes);
-                                }
-                                                    
-                                return <Card key={index} cardTitle={weekday.day} expandable={true} cardOnClick={onClick}>
-                                    { recipes && recipes.map((recipe, index) => <p key={index} className='h5'>{recipe.title}</p>) } 
-                                    </Card>
-                            })
-                        } 
-                                
-                        <Routes>
-                            <Route path='/weekDay' element={<WeekDay day={current_day} recipes={current_day_recipes} />} />
-                        </Routes>
+                            {week_days && 
+                                week_days.map((weekday, index) => {
+                                    let recipes = weekday.recipes;
+                                                        
+                                    return <Card key={index} cardTitle={weekday.day} expandable={true} dayId={weekday.id} >
+                                        { recipes && recipes.map((recipe, index) => <p key={index} className='h5'>{recipe.title}</p>) } 
+                                        </Card>
+                                })
+                            }
+                           
+                            
                     </div>
+        </>
                     
     )
 }

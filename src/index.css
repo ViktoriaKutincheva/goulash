@@ -125,7 +125,7 @@ footer {
   @apply mb-0;
 }
 .weekday-recipes-list h5 {
-  @apply font-light mb-1;
+  @apply mb-1;
 }
 .list-search-results li {
   @apply relative;
