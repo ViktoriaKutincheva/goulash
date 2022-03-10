@@ -13,7 +13,6 @@ const WeekDay = (props) => {
     const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let day = weekday[dayId]; 
     const [recipes, setRecipes] = useState('');
-    console.log(day)
     
 
     useEffect(() => {
@@ -21,16 +20,15 @@ const WeekDay = (props) => {
         .then((res) => {
             const data = res.data;
             setRecipes(data.recipes);
-            console.log(recipes)
         });
     }, [])
-    
+    console.log(recipes)
 
     return (
         <>
             <Card cardTitle={day} collapsible={true}>
                 <ul className="list-none list-search-results -mx-4 ">
-                {recipes && recipes.map((recipe, key) => { 
+                {recipes.length !=0 && recipes.map((recipe, key) => { 
                     
                     return <li key={key} id={recipe.id} className='flex mb-0 px-4 py-3 items-start' >
                         <img src={recipe.image} alt="" className='w-3/12 mr-4 h-auto rounded' />
@@ -49,7 +47,9 @@ const WeekDay = (props) => {
                                 {recipe.prepTime} mins</p>
                         </div>
                     </li>
+                    
                 })}  
+                <li className='mb-0 px-4 py-3'><Link to='/search' className='btn btn-orange'>Add recipes</Link></li>
                 </ul>
             </Card>
             <Outlet />
