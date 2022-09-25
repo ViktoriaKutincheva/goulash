@@ -21,23 +21,17 @@ const WeekDays = () => {
         
     return (
         <>
-        
-        
-                    <div className='weekdays relative'>
-                        
-                    
-                            {week_days && 
-                                week_days.map((weekday, index) => {
-                                    let recipes = weekday.recipes;
+            <div className='weekdays relative pb-3'>
+                {week_days && 
+                    week_days.map((weekday, index) => {
+                        let recipes = weekday.recipes;
                                                         
-                                    return <Card key={index} cardTitle={weekday.day} expandable={true} dayId={weekday.id} >
-                                        { recipes && recipes.map((recipe, index) => <p key={index} className='h5'>{recipe.title}</p>) } 
-                                        </Card>
-                                })
-                            }
-                           
-                            
-                    </div>
+                        return <Card key={index} cardTitle={weekday.day} expandable={true} dayId={weekday.id} >
+                            { recipes && recipes.map((recipe, index) => <p key={index} className='h5'>{recipe.title}</p>) } 
+                            </Card>
+                        })
+                    }           
+            </div>        
         </>
                     
     )

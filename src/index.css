@@ -107,6 +107,9 @@ footer {
   @apply text-chocolate-400 bg-chocolate-600;
 }
 
+.shopping-list {
+  padding-bottom: 100px;
+}
 .shopping-list li.true {
   @apply line-through text-gray-400;
 }
