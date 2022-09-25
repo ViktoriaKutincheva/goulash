@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom" 
 // import { useState, useEffect } from "react"
-import axios from "axios"
 import ShoppingList from "./components/ShoppingList"
 import Footer from "./components/Footer"
 import WeekDays from "./components/WeekDays"
@@ -8,7 +7,7 @@ import Recipe from "./components/Recipe"
 import WeekDay from "./components/WeekDay"
 import Search from "./components/Search"
 import { UserCircleIcon } from "@heroicons/react/solid"
-import SearchResults from "./components/SearchResults"
+//import SearchResults from "./components/SearchResults"
 
 
 
